@@ -138,7 +138,7 @@ function App() {
                 <div className="relative flex overflow-hidden rounded-md border-2 transition focus-within:border-blue-600">
                   <input
                     type="text"
-                    id="login-name"
+                    id="login1-name"
                     className="w-full flex-shrink appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 focus:outline-none"
                     placeholder="Last Name"
                     value={lastName}
