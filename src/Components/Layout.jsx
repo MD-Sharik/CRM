@@ -6,36 +6,34 @@ import Footer from "./Footer";
 function Layout() {
   const location = useLocation();
 
-  // Initialize the isDashboard variable
-  let isDashboard = false;
-
-  // Check if the current path matches any of the dashboard paths
-  if (
+  const dashboardPaths = [
     // USER---------------------------------
-    location.pathname === "/user/dashboard" ||
-    location.pathname === "/user/status" ||
-    location.pathname === "/user/profile" ||
-    // LOAN---------------------------------
-    location.pathname === "/user/loan1" ||
-    location.pathname === "/user/loan2" ||
-    location.pathname === "/user/loan3" ||
-    location.pathname === "/user/loan4" ||
-    location.pathname === "/user/loan5" ||
-    location.pathname === "/user/loan6" ||
+    "/user/dashboard",
+    "/user/status",
+    "/user/profile",
+    "/user/loan1",
+    "/user/loan2",
+    "/user/loan3",
+    "/user/loan4",
+    "/user/loan5",
+    "/user/loan6",
     // AGENT--------------------------------
-    location.pathname === "/agent/dashboard" ||
-    location.pathname === "/agent/profile" ||
-    location.pathname === "/agent/application" ||
+    "/agent/dashboard",
+    "/agent/profile",
+    "/agent/application",
     // ADMIN--------------------------------
-    location.pathname === "/admin/dashboard" ||
-    location.pathname === "/admin/profile" ||
-    location.pathname === "/admin/application" ||
-    location.pathname === "/admin/agent"
-  ) {
-    isDashboard = true;
-  }
+    "/admin/dashboard",
+    "/admin/profile",
+    "/admin/application",
+    "/admin/agent",
+  ];
 
+  // Check if the current path is in the dashboardPaths array
+  const isDashboard = dashboardPaths.includes(location.pathname);
+
+  // Additional debugging information
   console.log("Current path:", location.pathname); // For debugging
+  console.log("Dashboard paths:", dashboardPaths); // For debugging
   console.log("Is dashboard:", isDashboard); // For debugging
 
   return (

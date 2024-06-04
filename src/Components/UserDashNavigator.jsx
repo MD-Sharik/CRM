@@ -1,11 +1,13 @@
 // File: src/components/UserDashNavigator.js
 
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function UserDashNavigator() {
+  const navigate = useNavigate();
   const handleSignout = () => {
-    localStorage.removeItem("email");
+    localStorage.removeItem("TOKEN");
+    navigate("/user/login");
   };
   return (
     <div>

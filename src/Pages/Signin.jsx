@@ -11,7 +11,7 @@ function Signin() {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://256-crypto-backend.vercel.app/api/v1/user/login",
+        "https://crm-backend-jade.vercel.app/api/v1/user/login",
         {
           method: "POST",
           headers: {
@@ -24,7 +24,8 @@ function Signin() {
 
       if (response.ok) {
         localStorage.setItem("mail", email);
-        navigate("/profile");
+        localStorage.setItem("TOKEN", data.token);
+        navigate("/user/dashboard");
       } else {
         setError(data.message);
       }

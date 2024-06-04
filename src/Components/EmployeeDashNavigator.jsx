@@ -1,9 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function EmployeeDashNavigator() {
+  const Navigate = useNavigate();
   const handleSignout = () => {
-    localStorage.removeItem("email");
+    localStorage.removeItem("TOKEN");
+    Navigate("/");
   };
   return (
     <div>

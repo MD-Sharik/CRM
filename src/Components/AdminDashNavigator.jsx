@@ -1,9 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function AdminDashNavigator() {
+  const navigate = useNavigate();
   const handleSignout = () => {
-    localStorage.removeItem("email");
+    localStorage.removeItem("TOKEN");
+    navigate("/");
   };
   return (
     <div>
@@ -184,9 +186,12 @@ function AdminDashNavigator() {
                   clipRule="evenodd"
                 />
               </svg>
-              <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+              <button
+                onClick={handleSignout}
+                className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
+              >
                 sign out
-              </p>
+              </button>
             </NavLink>
           </li>
         </ul>
