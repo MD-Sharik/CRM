@@ -44,6 +44,7 @@ function App() {
         "https://crm-backend-jade.vercel.app/api/v1/user/signup",
         {
           method: "POST",
+          mode: "no-cors",
           headers: {
             "Content-Type": "application/json",
           },
