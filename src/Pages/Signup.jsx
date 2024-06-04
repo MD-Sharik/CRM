@@ -60,8 +60,7 @@ function App() {
 
       const data = await response.json();
       if (response.ok) {
-        alert("Signup successful");
-        // Optionally, redirect the user to another page here
+        // alert("Signup successful");
         navigate("/verify");
       } else {
         setError(data.message || "Signup failed");
