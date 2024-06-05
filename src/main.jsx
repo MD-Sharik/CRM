@@ -29,12 +29,14 @@ import ProtectedRoute from "./Components/AdminProtectedRoute.jsx"; // Import the
 import AgentProtectedRoute from "./Components/AgentProtectedRoute.jsx";
 import UserProtectedRoute from "./Components/UserProtectedRoute.jsx";
 import VerifyOTP from "./Pages/VerifiyOtp.jsx";
+import Page404 from "./Pages/Page404.jsx";
 
 const Main = () => (
   <Router>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="" element={<LandingPage />} />
+        <Route path="*" element={<Page404 />} />
         {/* -----------------------------USER--------------------------------- */}
         <Route
           path="/user/dashboard"
