@@ -61,7 +61,7 @@ function App() {
       const data = await response.json();
       if (response.ok) {
         // alert("Signup successful");
-        navigate("/verify");
+        navigate("/verify", { state: { userId: data.userId } });
       } else {
         setError(data.message || "Signup failed");
       }

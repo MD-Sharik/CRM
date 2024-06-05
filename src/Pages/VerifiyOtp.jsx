@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function VerifyOTP() {
@@ -7,11 +8,17 @@ function VerifyOTP() {
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
+  useEffect(() => {
+    if (location.state && location.state.userId) {
+      setUserId(location.state.userId);
+    }
+  }, [location.state]);
+
   const handleOTPSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://crm-backend-jade.vercel.app/api/v1/user/verify-otp",
+        "https://crm-backend-jade.vercel.app/api/v1/user/verifyOTP",
         {
           method: "POST",
           headers: {
