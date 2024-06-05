@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function VerifyOTP() {
+  const location = useLocation(); // Use useLocation instead of useHistory
   const [otp, setOtp] = useState("");
   const [userId, setUserId] = useState(""); // This should ideally come from the signup response
   const [error, setError] = useState("");
