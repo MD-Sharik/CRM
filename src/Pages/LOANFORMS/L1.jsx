@@ -38,11 +38,15 @@ function PersonalLoanForm() {
       for (let i = 0; i < formData.documents.length; i++) {
         data.append("documents", formData.documents[i]);
       }
-      const response = await axios.post("/user/loan/personalloan", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "https://crm-backend-jade.vercel.app/api/v2/user/loan/personalloan",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       console.log(response.data);
       // Handle success (redirect or display confirmation)
     } catch (error) {
