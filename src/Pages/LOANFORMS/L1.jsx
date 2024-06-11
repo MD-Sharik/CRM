@@ -51,9 +51,16 @@ function PersonalLoanForm() {
   };
 
   return (
-    <>
-      <h1>Personal Loan Application Form</h1>{" "}
-      <form id="loanForm" encType="multipart/form-data" onSubmit={handleSubmit}>
+    <div className="bg-white">
+      <h1 className="bg-blue-600 text-center text-white">
+        Personal Loan Application Form
+      </h1>{" "}
+      <form
+        id="loanForm"
+        className="m-auto shadow-lg"
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+      >
         {/* Personal Information */}
         <label htmlFor="name">Full Name:</label>{" "}
         <input
@@ -105,7 +112,7 @@ function PersonalLoanForm() {
         {/* Submit button */}
         <button type="submit">Submit Application</button>{" "}
       </form>{" "}
-    </>
+    </div>
   );
 }
 
