@@ -309,68 +309,111 @@ function PersonalLoanForm() {
 
   return (
     <>
-      <title>Loan Application</title> {/* Add CSS for styling */}{" "}
-      <link rel="stylesheet" href="stylesheet.css" />{" "}
-      <h1>Loan Application Form</h1>{" "}
-      {alertMessage && <div className="alert">{alertMessage}</div>}{" "}
-      {/* Display alert message if present */}{" "}
-      <form id="loanForm" encType="multipart/form-data" onSubmit={handleSubmit}>
-        {/* Personal Information */} <label htmlFor="name">Full Name:</label>{" "}
-        <input
-          type="text"
-          id="name"
-          name="name"
+      <title>Personal Loan Application</title>
+      {/* Add CSS for styling */}
+      <link rel="stylesheet" href="stylesheet.css" />
+      <style
+        dangerouslySetInnerHTML={{
+          __html:
+            'body { font-family: Arial, sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; } h1 { text-align: center; margin-top: 20px; color: #333; } form { background-color: #fff; max-width: 500px; margin: 20px auto; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); } label { display: block; font-weight: bold; margin-top: 10px; } input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 3px; font-size: 16px; } input[type="file"] { margin-top: 5px; } button[type="submit"] { background-color: #007BFF; color: #fff; border: none; padding: 10px 20px; font-size: 18px; border-radius: 3px; cursor: pointer; } button[type="submit"]:hover { background-color: #0056b3; } #message { text-align: center; margin-top: 20px; color: #333; } /* Footer Styles */ footer { text-align: center; padding: 10px; background-color: #333; color: #fff; font-size: 14px; } ',
+        }}
+      />
+      <h1>Personal Loan Application Form</h1>{" "}
+      <form id="loanForm" encType="multipart/form-data">
+        {/* Personal Information */}
+        <label htmlFor="name">Full Name:</label>{" "}
+        <input type="text" id="name" name="name" required="" />
+        <br />
+        <label htmlFor="email">Email:</label>{" "}
+        <input type="email" id="email" name="email" required="" />
+        <br />
+        <label htmlFor="phone">Phone Number:</label>{" "}
+        <input type="tel" id="phone" name="phone" required="" />
+        <br />
+        <label htmlFor="dob">Date of Birth:</label>{" "}
+        <input type="date" id="dob" name="dob" required="" />
+        <br />
+        <label htmlFor="address">Address:</label>{" "}
+        <textarea
+          id="address"
+          name="address"
+          rows={4}
           required=""
-          onChange={handleChange}
+          defaultValue={""}
         />
-        <br /> <label htmlFor="email">Email:</label>{" "}
+        <br />
+        {/* Employment Information */}
+        <label htmlFor="employer">Employer:</label>{" "}
+        <input type="text" id="employer" name="employer" required="" />
+        <br />
+        <label htmlFor="annualIncome">Annual Income (₹):</label>{" "}
         <input
-          type="email"
-          id="email"
-          name="email"
+          type="number"
+          id="annualIncome"
+          name="annualIncome"
           required=""
-          onChange={handleChange}
         />
-        <br /> <label htmlFor="date">Date:</label>{" "}
-        <input
-          type="date"
-          id="date"
-          name="date"
-          required=""
-          onChange={handleChange}
-        />
-        <br /> <label htmlFor="amount">Amount:</label>{" "}
-        <input
-          type="text"
-          id="amount"
-          name="amount"
-          required=""
-          onChange={handleChange}
-        />
-        <br /> <label htmlFor="duration">Duration:</label>{" "}
-        <input
-          type="text"
-          id="duration"
-          name="duration"
-          required=""
-          onChange={handleChange}
-        />
-        <br /> <label htmlFor="documents">Documents:</label>{" "}
+        <br />
+        {/* Loan Details */}
+        <label htmlFor="loanAmount">Loan Amount (₹):</label>{" "}
+        <select id="loanAmount" name="loanAmount" required="">
+          {" "}
+          <option value={50000}>₹50,000</option>{" "}
+          <option value={100000}>₹100,000</option>{" "}
+          <option value={150000}>₹150,000</option>{" "}
+          <option value={200000}>₹200,000</option>{" "}
+          {/* Add more options as needed */}{" "}
+        </select>{" "}
+        <label htmlFor="loanDuration">Loan Duration:</label>{" "}
+        <select id="loanDuration" name="loanDuration" required="">
+          {" "}
+          <option value={12}>12 months</option>{" "}
+          <option value={24}>24 months</option>{" "}
+          <option value={36}>36 months</option>{" "}
+          {/* Add more options as needed */}{" "}
+        </select>
+        <br />
+        {/* Calculated loan rate display */}
+        <label htmlFor="calculatedRate">
+          Calculated Loan Interest Rate (%):
+        </label>{" "}
+        <span id="calculatedRateValue">--</span>{" "}
+        <p>
+          Interest rates may vary based on the loan amount and other factors.
+          The calculated rate represents an estimate based on your inputs.
+        </p>{" "}
+        {/* Add this where you want to display the total amount */}
+        <label htmlFor="totalAmount">Total Amount:</label>{" "}
+        <span id="totalAmount">--</span>{" "}
+        <label htmlFor="loanPurpose">Loan Purpose:</label>{" "}
+        <select id="loanPurpose" name="loanPurpose" required="">
+          {" "}
+          <option value="personal">Personal</option>{" "}
+          {/* Add more options as needed */}{" "}
+        </select>
+        <br />
+        {/* Input field for ID photograph upload */}
+        <label htmlFor="idPhoto">Upload ID Photograph:</label>{" "}
         <input
           type="file"
-          id="documents"
-          name="documents"
-          multiple
-          onChange={handleFileChange}
+          id="idPhoto"
+          name="idPhoto"
+          accept="image/*"
+          required=""
         />
-        <br /> {/* Submit button */}{" "}
+        <br />
+        {/* Submit button */}
         <button type="submit">Submit Application</button>{" "}
       </form>{" "}
-      {/* Footer */}{" "}
+      {/* After the closing </form> tag */}
+      {/* Footer */}
       <footer>
         {" "}
         <p>© 2023 Your Company Name. All rights reserved.</p>{" "}
       </footer>{" "}
+      {/* Display a message to the user */}
+      <div id="message" />{" "}
+      {/* Add JavaScript for form submission and styling */}
     </>
   );
 }
