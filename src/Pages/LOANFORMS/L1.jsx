@@ -57,7 +57,7 @@ function PersonalLoanForm() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-0 sm:p-12">
-      <div className="mx-auto max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
+      <div className="mx-auto min-h-[40rem] max-w-md px-6 py-12 bg-white border-0 shadow-lg sm:rounded-3xl">
         <h1 className="text-2xl font-bold mb-8">Personal Loan Application</h1>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="relative z-0 w-full mb-5">
