@@ -23,10 +23,10 @@ function LOANBUTTON({ title, color, shadow, link }) {
   const bgshadowClass = shadowClasses[shadow] || "bg-gray-500"; // Fallback to gray if color is not in the map
 
   return (
-    <div className="text-center bg-white shadow-md basis-72 xl:basis-84 xl:grow-0 grow pb-4 rounded-lg w-72 flex flex-col items-center justify-center">
+    <div className="text-center bg-white min-h-48 shadow-md basis-72 xl:basis-84 xl:grow-0 grow pb-4 rounded-lg w-72 flex flex-col items-center justify-between">
       <div className="rounded-t-lg">
         <div
-          className={`-translate-y-2 rounded-md w-12 px-4 py-3 text-white shadow-lg ${bgshadowClass} ${bgColorClass}`}
+          className={`-translate-y-2 rounded-md w-36 px-4 py-3 text-white shadow-lg ${bgshadowClass} ${bgColorClass}`}
         >
           {title}
         </div>

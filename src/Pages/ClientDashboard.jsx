@@ -21,40 +21,28 @@ function ClientDashboard() {
               <div className="text-2xl font-bold text-zinc-700">Loans</div>
               <div className="mt-12 flex gap-8 min-h-52 items-center justify-start flex-wrap ">
                 <LOANBUTTON
-                  title={"L1"}
+                  title={"Car Loan"}
                   link={"/user/loan1"}
                   color={"blue"}
                   shadow={"blue"}
                 />
                 <LOANBUTTON
-                  title={"L2"}
+                  title={"Personal Loan"}
                   link={"/user/loan2"}
                   color={"green"}
                   shadow={"green"}
                 />
                 <LOANBUTTON
-                  title={"L3"}
+                  title={"Home Loan"}
                   link={"/user/loan3"}
                   color={"red"}
                   shadow={"red"}
                 />
                 <LOANBUTTON
-                  title={"L4"}
+                  title={"Business Loan"}
                   link={"/user/loan4"}
                   color={"orange"}
                   shadow={"orange"}
-                />
-                <LOANBUTTON
-                  title={"L5"}
-                  link={"/user/loan5"}
-                  color={"violet"}
-                  shadow={"violet"}
-                />
-                <LOANBUTTON
-                  title={"L6"}
-                  link={"/user/loan6"}
-                  color={"yellow"}
-                  shadow={"yellow"}
                 />
               </div>
             </div>

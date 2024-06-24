@@ -1,7 +1,6 @@
-// main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./Components/Layout.jsx";
 import Signin from "./Pages/Signin.jsx";
@@ -25,96 +24,110 @@ import L3 from "./Pages/LOANFORMS/L3.jsx";
 import L4 from "./Pages/LOANFORMS/L4.jsx";
 import L5 from "./Pages/LOANFORMS/L5.jsx";
 import L6 from "./Pages/LOANFORMS/L6.jsx";
-import ProtectedRoute from "./Components/AdminProtectedRoute.jsx"; // Import the ProtectedRoute component
+import ProtectedRoute from "./Components/AdminProtectedRoute.jsx";
 import AgentProtectedRoute from "./Components/AgentProtectedRoute.jsx";
 import UserProtectedRoute from "./Components/UserProtectedRoute.jsx";
 import VerifyOTP from "./Pages/VerifiyOtp.jsx";
 import Page404 from "./Pages/Page404.jsx";
+import SubmittedLoan from "./Pages/SubmittedLoan.jsx";
+import LoanDetailsCheck from "./Pages/LoanDetailsCheck.jsx";
+import ApplyLoanAgent from "./Pages/ApplyLoanAgent.jsx";
+import {
+  loanApplicationsLoader,
+  loanApplicationsList,
+  loanStatusClient,
+} from "./Utils/LaonApplicationHistory.js";
 
-const Main = () => (
-  <Router>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route path="" element={<LandingPage />} />
-        <Route path="*" element={<Page404 />} />
-        {/* -----------------------------USER--------------------------------- */}
-        <Route
-          path="/user/dashboard"
-          element={<UserProtectedRoute element={<ClientDashboard />} />}
-        />
-        <Route
-          path="/user/profile"
-          element={<UserProtectedRoute element={<UserProfile />} />}
-        />
-        <Route
-          path="/user/status"
-          element={<UserProtectedRoute element={<UserStatus />} />}
-        />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/verify" element={<VerifyOTP />} />
-        <Route
-          path="/user/Loan1"
-          element={<UserProtectedRoute element={<L1 />} />}
-        />
-        <Route
-          path="/user/Loan2"
-          element={<UserProtectedRoute element={<L2 />} />}
-        />
-        <Route
-          path="/user/Loan3"
-          element={<UserProtectedRoute element={<L3 />} />}
-        />
-        <Route
-          path="/user/Loan4"
-          element={<UserProtectedRoute element={<L4 />} />}
-        />
-        <Route
-          path="/user/Loan5"
-          element={<UserProtectedRoute element={<L5 />} />}
-        />
-        <Route
-          path="/user/Loan6"
-          element={<UserProtectedRoute element={<L6 />} />}
-        />
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "", element: <LandingPage /> },
+      { path: "*", element: <Page404 /> },
+      {
+        path: "user",
+        children: [
+          {
+            path: "dashboard",
+            element: <UserProtectedRoute element={<ClientDashboard />} />,
+          },
+          {
+            path: "profile",
+            element: <UserProtectedRoute element={<UserProfile />} />,
+          },
+          {
+            path: "status",
+            loader: loanStatusClient,
+            element: <UserProtectedRoute element={<UserStatus />} />,
+          },
+          { path: "Loan1", element: <UserProtectedRoute element={<L1 />} /> },
+          { path: "Loan2", element: <UserProtectedRoute element={<L2 />} /> },
+          { path: "Loan3", element: <UserProtectedRoute element={<L3 />} /> },
+          { path: "Loan4", element: <UserProtectedRoute element={<L4 />} /> },
+          { path: "Loan5", element: <UserProtectedRoute element={<L5 />} /> },
+          { path: "Loan6", element: <UserProtectedRoute element={<L6 />} /> },
+          {
+            path: "LoanSubmitted",
+            element: <UserProtectedRoute element={<SubmittedLoan />} />,
+          },
+        ],
+      },
+      { path: "signin", element: <Signin /> },
+      { path: "signup", element: <Signup /> },
+      { path: "verify", element: <VerifyOTP /> },
+      {
+        path: "agent",
+        children: [
+          { path: "login", element: <EmployeeLogin /> },
+          {
+            path: "/agent/dashboard",
+            loader: loanApplicationsList,
+            element: <AgentProtectedRoute element={<EmployeeDashboard />} />,
+          },
+          {
+            path: "/agent/profile",
+            element: <AgentProtectedRoute element={<EmployeeProfile />} />,
+          },
 
-        {/* ---------------------------EMPLOYEE------------------------------- */}
-        <Route path="/agent/login" element={<EmployeeLogin />} />
-        <Route
-          path="/agent/dashboard"
-          element={<AgentProtectedRoute element={<EmployeeDashboard />} />}
-        />
-        <Route
-          path="/agent/profile"
-          element={<AgentProtectedRoute element={<EmployeeProfile />} />}
-        />
-        <Route
-          path="/agent/application"
-          element={<AgentProtectedRoute element={<EmployeeApplication />} />}
-        />
+          {
+            path: "/agent/user/:_id",
+            element: <AgentProtectedRoute element={<LoanDetailsCheck />} />,
+          },
+          {
+            path: "/agent/application",
+            loader: loanApplicationsLoader,
+            element: <AgentProtectedRoute element={<EmployeeApplication />} />,
+          },
+        ],
+      },
+      {
+        path: "admin",
+        children: [
+          { path: "login", element: <AdminLogin /> },
+          {
+            path: "dashboard",
+            element: <ProtectedRoute element={<AdminDashboard />} />,
+          },
+          {
+            path: "profile",
+            element: <ProtectedRoute element={<AdminProfile />} />,
+          },
+          {
+            path: "agent",
+            element: <ProtectedRoute element={<AdminAgent />} />,
+          },
+          {
+            path: "application",
+            element: <ProtectedRoute element={<AdminApplication />} />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
-        {/* -----------------------------ADMIN-------------------------------- */}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route
-          path="/admin/dashboard"
-          element={<ProtectedRoute element={<AdminDashboard />} />}
-        />
-        <Route
-          path="/admin/profile"
-          element={<ProtectedRoute element={<AdminProfile />} />}
-        />
-        <Route
-          path="/admin/agent"
-          element={<ProtectedRoute element={<AdminAgent />} />}
-        />
-        <Route
-          path="/admin/application"
-          element={<ProtectedRoute element={<AdminApplication />} />}
-        />
-      </Route>
-    </Routes>
-  </Router>
-);
+const Main = () => <RouterProvider router={router} />;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

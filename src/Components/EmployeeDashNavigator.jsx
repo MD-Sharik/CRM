@@ -98,11 +98,7 @@ function EmployeeDashNavigator() {
           </li>
         </ul>
         <ul className="mb-4 flex flex-col gap-1">
-          <li className="mx-3.5 mt-4 mb-2">
-            <p className="block antialiased font-sans text-sm leading-normal text-white font-black uppercase opacity-75">
-              auth pages
-            </p>
-          </li>
+          <hr className=" mb-2 border-slate-600" />
           <li>
             <NavLink
               to="/agent/profile"

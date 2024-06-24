@@ -40,27 +40,25 @@ function App() {
     }
 
     try {
-      const response = await fetch(
-        "https://crm-backend-jade.vercel.app/api/v1/user/signup",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            firstName,
-            lastName,
-            email,
-            password,
-            phone,
-            referralId,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/v1/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+          phone,
+          referralId,
+        }),
+      });
 
       const data = await response.json();
       if (response.ok) {
         // alert("Signup successful");
+        localStorage.setItem("userId", data.userId);
         navigate("/verify", { state: { userId: data.userId } });
       } else {
         setError(data.message || "Signup failed");

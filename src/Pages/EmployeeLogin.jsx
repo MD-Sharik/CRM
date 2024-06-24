@@ -16,16 +16,13 @@ function EmployeeLogin() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://crm-backend-jade.vercel.app/api/v1/agent/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ referralId, password }),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/v1/agent/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ referralId, password }),
+      });
       const data = await response.json();
 
       if (response.ok) {
