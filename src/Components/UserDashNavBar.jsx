@@ -42,8 +42,8 @@ function UserDashNavBar() {
               home
             </h6>
           </div>
-          <div className="flex items-center">
-            <div className="mr-auto md:mr-4 md:w-56"></div>
+          <div className="flex justify-evenly">
+            <div className=""></div>
             {/* Dashboard */}
             <Link to="/user/dashboard">
               <button
