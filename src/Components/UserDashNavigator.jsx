@@ -7,7 +7,7 @@ function UserDashNavigator() {
   const navigate = useNavigate();
   const handleSignout = () => {
     localStorage.removeItem("TOKEN");
-    navigate("/user/login");
+    navigate("https://crm-eosin-six.vercel.app/user/signin");
   };
   return (
     <div>

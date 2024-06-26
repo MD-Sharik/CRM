@@ -10,7 +10,7 @@ function UserDashNavBar() {
   const navigate = useNavigate();
   const handleSignout = () => {
     localStorage.removeItem("TOKEN");
-    navigate("/user/login");
+    navigate("/user/signin");
   };
   return (
     <div>
