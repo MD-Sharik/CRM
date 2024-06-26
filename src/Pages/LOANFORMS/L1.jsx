@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function L1() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -37,10 +38,12 @@ function L1() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const userId = localStorage.getItem("userId"); // Retrieve userId from local storage
       if (!userId) {
         alert("User not logged in");
+        setLoading(false);
         return;
       }
 
@@ -83,6 +86,8 @@ function L1() {
         console.error("Error message:", error.message);
       }
       console.error("Error config:", error.config);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -282,9 +287,12 @@ function L1() {
             <button
               id="button"
               type="submit"
-              className="w-full px-6 py-3 mt-3 text-lg text-white bg-blue-500 transition-all duration-150 ease-linear rounded-lg shadow outline-none hover:bg-gray-800 hover:shadow-lg focus:outline-none"
+              className={`w-full px-6 py-3 mt-3 text-lg text-white bg-blue-500 transition-all duration-150 ease-linear rounded-lg shadow outline-none hover:bg-gray-800 hover:shadow-lg focus:outline-none ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              disabled={loading} // Disable button when loading
             >
-              Submit
+              {loading ? "Submiting..." : "Submit"}
             </button>
           </form>
         </div>
