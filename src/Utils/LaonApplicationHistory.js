@@ -1,4 +1,3 @@
-// loaders/loanApplicationsLoader.js
 import axios from "axios";
 
 export const loanApplicationsLoader = async () => {

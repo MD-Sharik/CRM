@@ -60,7 +60,7 @@ function L1() {
       data.append("referralId", formData.referralId); // Include referralId in the form data
 
       const response = await axios.post(
-        "https://crm-backend-jade.vercel.app/api/v2/loan/car",
+        "http://localhost:3000/api/v2/loan/car",
         data,
         {
           headers: {
