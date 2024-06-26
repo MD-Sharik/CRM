@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const loanApplicationsLoader = async () => {
-  const referralId = localStorage.getItem("AGENT").toUpperCase();
+  const referralId = localStorage.getItem("AGENT")?.toUpperCase();
   const response = await axios.get(
     "https://crm-backend-jade.vercel.app/api/v2/agent/loanhistory",
     {

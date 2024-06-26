@@ -32,7 +32,7 @@ function LoanDetailsCheck() {
   const approveLoan = async () => {
     try {
       const response = await axios.put(
-        "https://crm-backend-jade.vercel.app/api/v2/agent/approveloan",
+        "http://localhost:3000/api/v2/agent/approveloan",
         { _id }
       );
       if (response.status === 200) {
@@ -49,7 +49,7 @@ function LoanDetailsCheck() {
   const rejectLoan = async () => {
     try {
       const response = await axios.put(
-        "https://crm-backend-jade.vercel.app/api/v2/agent/rejectloan",
+        "http://localhost:3000/api/v2/agent/rejectloan",
         { _id }
       );
       if (response.status === 200) {
@@ -139,7 +139,7 @@ function LoanDetailsCheck() {
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
       <button
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/agent/dashboard")}
         className="bg-blue-500 mb-8 text-white px-8 rounded-xl py-2 text-xl"
       >
         Back
