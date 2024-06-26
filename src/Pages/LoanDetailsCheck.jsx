@@ -18,7 +18,7 @@ function LoanDetailsCheck() {
     const fetchDetailLoan = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/v2/agent/detailloan?_id=${_id}`
+          `https://crm-backend-jade.vercel.app/api/v2/agent/detailloan?_id=${_id}`
         );
         setLoanDetails(response.data);
       } catch (error) {
@@ -32,7 +32,7 @@ function LoanDetailsCheck() {
   const approveLoan = async () => {
     try {
       const response = await axios.put(
-        "http://localhost:3000/api/v2/agent/approveloan",
+        "https://crm-backend-jade.vercel.app/api/v2/agent/approveloan",
         { _id }
       );
       if (response.status === 200) {
