@@ -3,8 +3,6 @@ import React from "react";
 function L3() {
   return (
     <>
-      {/* component */}
-      {/* Code on GiHub: https://github.com/vitalikda/form-floating-labels-tailwindcss */}
       <style
         dangerouslySetInnerHTML={{
           __html:

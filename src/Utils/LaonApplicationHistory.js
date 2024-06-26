@@ -4,7 +4,7 @@ import axios from "axios";
 export const loanApplicationsLoader = async () => {
   const referralId = localStorage.getItem("AGENT").toUpperCase();
   const response = await axios.get(
-    "http://localhost:3000/api/v2/agent/loanhistory",
+    "https://crm-backend-jade.vercel.app/api/v2/agent/loanhistory",
     {
       params: {
         referralId: referralId,
@@ -18,7 +18,7 @@ export const loanApplicationsLoader = async () => {
 export const loanApplicationsList = async () => {
   const referralId = localStorage.getItem("AGENT").toUpperCase();
   const response = await axios.get(
-    "http://localhost:3000/api/v2/agent/loanlist",
+    "https://crm-backend-jade.vercel.app/api/v2/agent/loanlist",
     {
       params: {
         referralId: referralId,
@@ -30,11 +30,14 @@ export const loanApplicationsList = async () => {
 };
 
 export const loanStatusClient = async () => {
-  const response = await axios.get("http://localhost:3000/api/v2/loan/status", {
-    params: {
-      userId: localStorage.getItem("userId"),
-    },
-  });
+  const response = await axios.get(
+    "https://crm-backend-jade.vercel.app/api/v2/loan/status",
+    {
+      params: {
+        userId: localStorage.getItem("userId"),
+      },
+    }
+  );
 
   return response.data.allLoans;
 };

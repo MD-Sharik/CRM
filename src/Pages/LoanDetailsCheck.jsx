@@ -49,7 +49,7 @@ function LoanDetailsCheck() {
   const rejectLoan = async () => {
     try {
       const response = await axios.put(
-        "http://localhost:3000/api/v2/agent/rejectloan",
+        "https://crm-backend-jade.vercel.app/api/v2/agent/rejectloan",
         { _id }
       );
       if (response.status === 200) {

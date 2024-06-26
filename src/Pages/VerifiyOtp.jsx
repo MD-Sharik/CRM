@@ -19,7 +19,7 @@ function VerifyOTP() {
     e.preventDefault();
     try {
       const response = await fetch(
-        "http://localhost:3000/api/v1/user/verifyOTP",
+        "https://crm-backend-jade.vercel.app/api/v1/user/verifyOTP",
         {
           method: "POST",
           headers: {

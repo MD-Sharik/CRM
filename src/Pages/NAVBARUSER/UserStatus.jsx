@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import UserDashNavigator from "../../Components/UserDashNavigator";
 import UserDashNavBar from "../../Components/UserDashNavBar";
 import UserFooter from "../../Components/UserFooter";
