@@ -5,10 +5,12 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); // Loading state
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when form is submitted
     try {
       const response = await fetch(
         "https://crm-backend-jade.vercel.app/api/v1/user/login",
@@ -22,10 +24,19 @@ function Signin() {
       );
       const data = await response.json();
 
+      console.log("Login response:", data); // Log the response data
+
       if (response.ok) {
         localStorage.setItem("mail", email);
         localStorage.setItem("TOKEN", data.token);
-        localStorage.setItem("userId", data.userId); // Store userId in localStorage
+
+        if (data.userId) {
+          localStorage.setItem("userId", data.userId); // Store userId in localStorage
+          console.log("userId stored:", data.userId); // Confirm userId is stored
+        } else {
+          console.error("userId not found in response");
+        }
+
         navigate("/user/dashboard");
       } else {
         setError(data.message);
@@ -33,6 +44,8 @@ function Signin() {
     } catch (error) {
       console.log("error", error);
       setError("An unexpected error occurred. Please try again later.");
+    } finally {
+      setLoading(false); // Set loading to false after API call completes
     }
   };
 
@@ -42,6 +55,7 @@ function Signin() {
   const passwordLog = (e) => {
     setPassword(e.target.value);
   };
+
   return (
     <div>
       <div className="flex flex-wrap text-slate-800">
@@ -90,11 +104,15 @@ function Signin() {
               </a>
               <button
                 type="submit"
-                className="rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32"
+                className={`rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32 ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={loading} // Disable button when loading
               >
-                Sign in
+                {loading ? "Signing In..." : "Sign in"}
               </button>
             </form>
+            {error && <div className="text-red-600">{error}</div>}
             <div className="py-12 text-center">
               <p className="text-gray-600">
                 Don't have an account?
