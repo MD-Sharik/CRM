@@ -25,6 +25,7 @@ function Signin() {
       if (response.ok) {
         localStorage.setItem("mail", email);
         localStorage.setItem("TOKEN", data.token);
+        localStorage.setItem("userId", data.userId); // Store userId in localStorage
         navigate("/user/dashboard");
       } else {
         setError(data.message);

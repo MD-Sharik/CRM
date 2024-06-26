@@ -32,7 +32,7 @@ function L2() {
     e.preventDefault();
 
     try {
-      const userId = localStorage.getItem("userId"); // Retrieve userId from local storage
+      const userId = localStorage.getItem("userId");
       if (!userId) {
         alert("User not logged in");
         return;
