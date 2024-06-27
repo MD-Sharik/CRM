@@ -45,7 +45,7 @@ function Signin() {
       console.log("error", error);
       setError("An unexpected error occurred. Please try again later.");
     } finally {
-      setLoading(false); // Set loading to false after API call completes
+      setLoading(false);
     }
   };
 
@@ -58,8 +58,8 @@ function Signin() {
 
   return (
     <div>
-      <div className="flex flex-wrap text-slate-800">
-        <div className="flex w-full flex-col md:w-1/2">
+      <div className="flex flex-wrap justify-center items-center text-slate-800">
+        <div className="flex  mt-16 md:mt-10  md:left-1/2">
           <div className="my-auto mx-auto flex flex-col justify-center px-6 pt-8 md:justify-start lg:w-[28rem]">
             <p className="text-center text-3xl font-bold md:leading-tight md:text-left md:text-5xl">
               Welcome back <br />
@@ -96,15 +96,15 @@ function Signin() {
                   />
                 </div>
               </div>
-              <a
-                href="#"
+              <Link
+                to={"/forgotpassword"}
                 className="mb-6 text-center text-sm font-medium text-gray-600 md:text-left"
               >
                 Forgot password?
-              </a>
+              </Link>
               <button
                 type="submit"
-                className={`rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 md:w-32 ${
+                className={`rounded-lg bg-blue-600 px-4 py-2 text-center text-base font-semibold text-white shadow-md outline-none ring-blue-500 ring-offset-2 transition hover:bg-blue-700 focus:ring-2 w-full ${
                   loading ? "opacity-50 cursor-not-allowed" : ""
                 }`}
                 disabled={loading} // Disable button when loading
@@ -113,21 +113,22 @@ function Signin() {
               </button>
             </form>
             {error && <div className="text-red-600">{error}</div>}
-            <div className="py-12 text-center">
+            <div className="py-4 text-center">
               <p className="text-gray-600">
                 Don't have an account?
                 <Link
                   to="/signup"
-                  className="whitespace-nowrap font-semibold text-gray-900 underline underline-offset-4"
+                  className="whitespace-nowrap font-semibold text-gray-900"
                 >
-                  Sign up for free.
+                  {" "}
+                  <span className="text-blue-500  underline underline-offset-1">
+                    Sign up
+                  </span>{" "}
+                  here.
                 </Link>
               </p>
             </div>
           </div>
-        </div>
-        <div className="relative hidden md:flex items-center justify-center text-center h-screen select-none bg-blue-600 bg-gradient-to-br md:w-1/2">
-          <div className="py-16 px-8 text-white xl:w-[40rem]"></div>
         </div>
       </div>
     </div>

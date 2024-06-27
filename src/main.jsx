@@ -37,6 +37,8 @@ import {
   loanApplicationsList,
   loanStatusClient,
 } from "./Utils/LaonApplicationHistory.js";
+import ForgetPass from "./Pages/ForgetPass.jsx";
+import ResetPassword from "./Pages/ResetPass.jsx";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +76,8 @@ const router = createBrowserRouter([
         ],
       },
       { path: "signin", element: <Signin /> },
+      { path: "forgotpassword", element: <ForgetPass /> },
+      { path: "resetpassword", element: <ResetPassword /> },
       { path: "signup", element: <Signup /> },
       { path: "verify", element: <VerifyOTP /> },
       {
