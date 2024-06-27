@@ -19,7 +19,7 @@ const ResetPassword = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/user/resetpassword",
+        "https://crm-eosin-six.vercel.app/api/v1/user/resetpassword",
         {
           token,
           password,
