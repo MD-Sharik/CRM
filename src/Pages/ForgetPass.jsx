@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://crm-eosin-six.vercel.app/api/v1/user/forgetpassword",
+        "https://crm-backend-jade.vercel.app/api/v1/user/forgetpassword",
         { email }
       );
       setMessage(response.data.message);
