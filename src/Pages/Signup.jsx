@@ -73,43 +73,18 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-wrap text-slate-800">
-        <div className="relative hidden h-screen select-none flex-col justify-center bg-blue-600 text-center md:flex md:w-1/2">
-          <div className="mx-auto py-16 px-8 text-white xl:w-[40rem]">
-            <span className="rounded-full bg-white px-3 py-1 font-medium text-blue-600">
-              First India Credit
-            </span>
-            <p className="my-6 text-3xl font-semibold leading-10">
-              Best Way to{" "}
-              <span className="mx-auto block w-72 whitespace-nowrap rounded-lg bg-orange-400 py-2 text-white">
-                Approve your loan
-              </span>
-            </p>
-            <p className="mb-4">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Incidunt
-              necessitatibus nostrum repellendus ab totam.
-            </p>
-            <a
-              href="https://firstindiacredit.com/"
-              target="_blank"
-              className="font-semibold tracking-wide text-white underline underline-offset-4"
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
-        <div className="flex w-full flex-col md:w-1/2">
-          <div className="flex justify-center pt-12 md:justify-start md:pl-12">
-            <a href="#" className="text-2xl font-bold text-blue-600">
-              {" "}
-              FirstIndiaCredit.{" "}
-            </a>
-          </div>
+      <div className="flex flex-wrap pb-10 pt-4 text-slate-800">
+        <div className="flex w-full flex-col">
           <div className="my-auto mx-auto flex flex-col justify-center px-6 pt-8 md:justify-start lg:w-[28rem]">
-            <p className="text-center text-3xl font-bold md:text-left md:leading-tight">
+            <div>
+              <a href="/" className="text-xl font-bold text-blue-600">
+                FirstIndiaCredit.
+              </a>
+            </div>
+            <p className="text-3xl font-bold md:text-left md:leading-tight">
               Create your free account
             </p>
-            <p className="mt-6 text-center font-medium md:text-left">
+            <p className=" mt-2 font-medium md:text-left">
               Already using FIC?
               <Link
                 to="/signin"
@@ -211,12 +186,8 @@ function App() {
                 <input
                   className="mr-2 h-5 w-5 appearance-none rounded border border-gray-300 bg-contain bg-no-repeat align-top text-black shadow checked:bg-blue-600 focus:border-blue-600 focus:shadow"
                   type="checkbox"
-                  id="remember-me"
-                  style={{
-                    backgroundImage:
-                      'url("data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"%3e%3cpath fill="none" stroke="%23fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 10l3 3l6-6"/%3e%3c/svg%3e")',
-                  }}
-                  defaultChecked
+                  id="t&C"
+                  required
                 />
                 <label className="inline-block" htmlFor="remember-me">
                   {" "}
