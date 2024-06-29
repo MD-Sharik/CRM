@@ -107,13 +107,112 @@ function L1() {
             onSubmit={handleSubmit}
             encType="multipart/form-data"
           >
-            {/* Existing form inputs */}
-            {/* ... */}
-
-            {/* File input fields */}
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder=" "
+                required=""
+                className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <label
+                htmlFor="name"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                Full Name
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Name is required
+              </span>
+            </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder=" "
+                className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <label
+                htmlFor="email"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                Email
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Email address is required
+              </span>
+            </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="text"
+                name="referralId"
+                value={formData.referralId}
+                onChange={handleChange}
+                placeholder=""
+                className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <label
+                htmlFor="referralId"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                Referral Id
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Referral Id is required
+              </span>
+            </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="number"
+                name="amount"
+                value={formData.amount}
+                onChange={handleChange}
+                placeholder=" "
+                className="pt-3 pb-2 pl-5 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <div className="absolute top-0 left-0 mt-3 ml-1 text-gray-400">
+                ₹
+              </div>
+              <label
+                htmlFor="amount"
+                className="absolute duration-300 top-3 left-5 -z-1 origin-0 text-gray-500"
+              >
+                Amount
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Amount is required
+              </span>
+            </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="number"
+                name="duration"
+                value={formData.duration}
+                onChange={handleChange}
+                placeholder=" "
+                className="pt-3 pb-2 pr-12 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <div className="absolute top-0 right-0 mt-3 mr-4 text-gray-400">
+                months
+              </div>
+              <label
+                htmlFor="duration"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                Duration
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Duration is required
+              </span>
+            </div>
             <div className="relative z-0 w-full mb-5">
               <input
                 type="file"
+                id="aadhaar"
                 name="aadhaar"
                 onChange={handleFileChange}
                 placeholder=" "
@@ -129,17 +228,71 @@ function L1() {
                 Aadhaar card is required
               </span>
             </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="file"
+                id="panCardUrl"
+                name="panCardUrl"
+                onChange={handleFileChange}
+                placeholder=" "
+                className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <label
+                htmlFor="panCardUrl"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                PAN Card
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                PAN card is required
+              </span>
+            </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="file"
+                id="drivingLicenseUrl"
+                name="drivingLicenseUrl"
+                onChange={handleFileChange}
+                placeholder=" "
+                className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <label
+                htmlFor="drivingLicenseUrl"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                Driving License
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Driving license is required
+              </span>
+            </div>
+            <div className="relative z-0 w-full mb-5">
+              <input
+                type="file"
+                id="otherDocumentUrl"
+                name="otherDocumentUrl"
+                onChange={handleFileChange}
+                placeholder=" "
+                className="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+              />
+              <label
+                htmlFor="otherDocumentUrl"
+                className="absolute duration-300 top-3 -z-1 origin-0 text-gray-500"
+              >
+                Other Documents
+              </label>
+              <span className="text-sm text-red-600 hidden" id="error">
+                Other documents are required
+              </span>
+            </div>
 
-            {/* Repeat similar structure for other file inputs */}
-
-            {/* Submit button */}
             <button
               id="button"
               type="submit"
               className={`w-full px-6 py-3 mt-3 text-lg text-white bg-blue-500 transition-all duration-150 ease-linear rounded-lg shadow outline-none hover:bg-gray-800 hover:shadow-lg focus:outline-none ${
                 loading ? "opacity-50 cursor-not-allowed" : ""
               }`}
-              disabled={loading} // Disable button when loading
+              disabled={loading}
             >
               {loading ? "Submitting..." : "Submit"}
             </button>
