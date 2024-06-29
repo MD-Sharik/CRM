@@ -37,6 +37,7 @@ function L1() {
   };
 
   const handleSubmit = async (e) => {
+    console.log("clicked on submission");
     e.preventDefault();
     setLoading(true);
     try {
@@ -47,6 +48,7 @@ function L1() {
         return;
       }
 
+      console.log("submission started");
       const data = new FormData();
       data.append("name", formData.name);
       data.append("email", formData.email);
